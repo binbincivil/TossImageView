@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="toss_default_circleCount">10</integer>
+    <integer name="toss_default_xAxisDirection">1</integer>
+    <integer name="toss_default_yAxisDirection">0</integer>
+    <integer name="toss_default_zAxisDirection">0</integer>
+    <integer name="toss_default_result">1</integer>
+    <integer name="toss_default_duration">3000</integer>
+    <integer name="toss_default_startOffset">0</integer>
+</resources>
