@@ -1,8 +1,12 @@
 package com.bbcivil.toss.sample;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
@@ -19,6 +23,8 @@ import android.widget.Spinner;
 
 import com.bbcivil.toss.TossImageView;
 import com.bbcivil.toss.animation.TossAnimation;
+
+import java.util.Random;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
@@ -53,21 +59,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Spinner mSpinner;
     private SeekBar mSeekBar;
     private EditText mEditText;
-    private Spinner xSpinner,ySpinner,zSpinner;
+    private Spinner xSpinner, ySpinner, zSpinner;
 
-    private Button start, complex;
+    private Button start;
     private TossImageView mTossImageView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        ActionBar actionBar = getActionBar();
+        actionBar.setTitle("TossImageView");
 
-        String ss;
+        setContentView(R.layout.activity_main);
 
         mSpinner = (Spinner) findViewById(R.id.spinner);
         mSeekBar = (SeekBar) findViewById(R.id.seekbar);
+        mSeekBar.setProgress(getResources().getInteger(R.integer.toss_default_duration));
         mEditText = (EditText) findViewById(R.id.edittext);
         xSpinner = (Spinner) findViewById(R.id.xdirection);
         ySpinner = (Spinner) findViewById(R.id.ydirection);
@@ -82,10 +90,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         xSpinner.setSelection(1);
 
         start = (Button) findViewById(R.id.start);
-        complex = (Button) findViewById(R.id.complex);
 
         start.setOnClickListener(this);
-        complex.setOnClickListener(this);
 
     }
 
@@ -93,7 +99,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.start:
-                int circleCount = 10;
+                int circleCount = getResources().getInteger(R.integer.toss_default_circleCount);
                 try {
                     circleCount = Integer.parseInt(mEditText.getText().toString());
                 } catch (Exception e) {
@@ -105,11 +111,28 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         .setXAxisDirection(mDirections[xSpinner.getSelectedItemPosition()])
                         .setYAxisDirection(mDirections[ySpinner.getSelectedItemPosition()])
                         .setZAxisDirection(mDirections[zSpinner.getSelectedItemPosition()])
+                        .setResult(new Random().nextInt(2) == 0 ? TossImageView.RESULT_FRONT : TossImageView.RESULT_REVERSE)
                         .startToss();
                 break;
-            case R.id.complex:
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.more:
                 startActivity(new Intent(this, ComplexTossActivity.class));
-                break;
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

@@ -5,11 +5,16 @@
     android:orientation="vertical"
     android:padding="10dp">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="200dp"
+    <Button
+        android:id="@+id/up"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" />
+        android:text="up" />
+    <Button
+        android:id="@+id/rhombus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="rhombus" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,12 +26,12 @@
             android:layout_height="100px"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/aaa"
+            android:src="@drawable/front"
             toss:circleCount="@integer/toss_default_circleCount"
             toss:duration="@integer/toss_default_duration"
-            toss:frontDrawable="@drawable/aaa"
+            toss:frontDrawable="@drawable/front"
             toss:result="front"
-            toss:reverseDrawable="@drawable/bbb"
+            toss:reverseDrawable="@drawable/reverse"
             toss:startOffset="@integer/toss_default_startOffset"
             toss:xAxisDirection="clockwise"
             toss:yAxisDirection="none"
