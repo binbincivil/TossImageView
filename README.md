@@ -7,7 +7,7 @@
 
 #About me
 Email：binbincivil@gmail.com<br>
-blog：http://blog.csdn.net/bingospunky/<br>
+Blog：http://blog.csdn.net/bingospunky/<br>
 如果你对项目有什么意见或者建议，欢迎你邮件我。
 
 #License
