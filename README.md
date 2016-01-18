@@ -11,7 +11,7 @@ blog：http://blog.csdn.net/bingospunky/<br>
 如果你对项目有什么意见或者建议，欢迎你邮件我。
 
 #License
-
+> Copyright 2016 binbincivil
 > 
 > Licensed under the Apache License, Version 2.0 (the "License");
 > you may not use this file except in compliance with the License.
